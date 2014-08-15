@@ -309,6 +309,21 @@ public class dtd2xs {
 
    private Document transform(Document xml, String xsltURI) {
       try {
+         java.io.InputStream is = null;
+         if (xsltURI == null) {
+            return xml;
+         } else if (xsltURI.isEmpty()) {
+             is = this.getClass().getResourceAsStream("/complextype.xsl");
+         } else {
+            is = (java.io.InputStream)(new java.net.URL(xsltURI).getContent());
+         }
+         return(transform(xml, is));
+         }
+      catch (Exception x) { log("\ndtd2xs: " + x); return null; }
+      }
+
+   private Document transform(Document xml, java.io.InputStream is) {
+      try {
 // CM: Use a JAXP Transformer instead of xt
 /*
          Document xslt = XmlDocument.createXmlDocument((new java.net.URL(xsltURI)).openStream(), false);
@@ -317,10 +332,6 @@ public class dtd2xs {
          result.getDocumentElement().removeAttribute("xmlns"); // added by xt
          return result;
 */
-         if (xsltURI == null) {
-            return xml;
-         } else {
-            java.io.InputStream is = (java.io.InputStream)(new java.net.URL(xsltURI).getContent());
             Transformer transformer = jaxp_transformer_factory.newTransformer(new StreamSource(is));
             Document result = jaxp_docbuilder.newDocument();
             transformer.transform(new DOMSource(xml), new DOMResult(result));
@@ -328,7 +339,6 @@ public class dtd2xs {
             result.getDocumentElement().removeAttribute("xmlns:xt"); // added by stylesheet
             return result;
          }
-      }
       catch (Exception x) { log("\ndtd2xs: " + x); return null; }
    }
 

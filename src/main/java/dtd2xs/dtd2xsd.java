@@ -52,11 +52,10 @@ public class dtd2xsd {
             }
             else usage();
          File dtd = new File(argument[i]);
-         File xslt = new File("complextype.xsl");
          String xsd =
             translator.translate(
                "file:///" + dtd.getAbsolutePath(),
-               "file:///" + xslt.getAbsolutePath(),
+               "",
                resolveEntity,
                ignoreComment,
                commentLength,
