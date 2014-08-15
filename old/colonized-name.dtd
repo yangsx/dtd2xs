@@ -1,8 +1,0 @@
-<!ENTITY % Presentation.content "(#PCDATA)" >
-<!ELEMENT Presentation %Presentation.content; >
-<!-- xml:lang contains values such as en, de, fr ... -->
-<!ATTLIST Presentation
-        ID CDATA #REQUIRED
-        xml:lang CDATA #IMPLIED
-        >
-
