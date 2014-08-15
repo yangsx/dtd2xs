@@ -31,6 +31,7 @@
 *
 ***************************************************************************/
 
+package dtd2xs;
 import java.util.*;
 // uncomment if your Java environment < v1.4
 // import dtd2xs;

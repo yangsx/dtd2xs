@@ -2,6 +2,8 @@
  * { XML 1.0 DTD } to { REC-xmlschema-1-20010502 }
  */
 
+package dtd2xs;
+
 import java.io.*;
 // uncomment if your Java environment < v1.4
 // import dtd2xs;

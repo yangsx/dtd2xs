@@ -31,6 +31,8 @@
 *
 ***************************************************************************/
 
+package dtd2xs;
+
 /* Modified to use JAXP by Chuck Morris (Northrop Grumman Information Technology, TASC), June 2003 */
 
 import java.io.*;
@@ -637,4 +639,3 @@ public class dtd2xs {
    }
 
 }
-
